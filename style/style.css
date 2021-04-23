@@ -1,0 +1,36 @@
+.wrapper .joystick-and-field-container .joystick-block {
+  display: grid;
+  grid-template-columns: 30px 30px 30px;
+  grid-template-rows: 30px 30px 30px;
+  grid-template-areas: "... btnUp ...." "btnLeft ... btnRight" "... btnDown ...";
+  gap: 2px;
+}
+.wrapper .joystick-and-field-container .joystick-block .joystick-btn-up {
+  grid-area: btnUp;
+}
+.wrapper .joystick-and-field-container .joystick-block .joystick-btn-left {
+  grid-area: btnLeft;
+}
+.wrapper .joystick-and-field-container .joystick-block .joystick-btn-right {
+  grid-area: btnRight;
+}
+.wrapper .joystick-and-field-container .joystick-block .joystick-btn-down {
+  grid-area: btnDown;
+}
+.wrapper .joystick-and-field-container .joystick-block .joystickMouseDown i {
+  color: goldenrod;
+}
+.wrapper .joystick-and-field-container .field-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper .joystick-and-field-container .field-container .row {
+  width: 100%;
+  display: flex;
+}
+.wrapper .joystick-and-field-container .field-container .cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: goldenrod;
+}/*# sourceMappingURL=style.css.map */
