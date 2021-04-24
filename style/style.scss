@@ -1,6 +1,10 @@
 .wrapper {
 
     .joystick-and-field-container {
+        margin-top: 30px;
+        padding: 0 20px;
+        display: flex; 
+        gap: 20px;
         .joystick-block {
             display: grid;
             grid-template-columns: 30px 30px 30px;
@@ -10,6 +14,7 @@
             "btnLeft ... btnRight"
             "... btnDown ...";
             gap: 2px;
+
             .joystick-btn-up{
                 grid-area: btnUp;
             }
@@ -30,6 +35,10 @@
             .joystickBtnDown i{
                 color: goldenrod;
             }
+        }
+
+        .joystick-block-of {
+            display: none;
         }
 
         .field-container {

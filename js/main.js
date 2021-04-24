@@ -11,12 +11,10 @@ const onClickBtnForm = () => {
     const columns = Number(formData.get('columns'));
     const rows = Number(formData.get('rows'));
 
+    joystick.classList.remove('joystick-block-of');
     createField(columns, rows);
 
 }
-
-btnForm.addEventListener('click', onClickBtnForm); 
-
 
 const createField = (columns,rows) => {
     let counter = 0;
@@ -57,6 +55,7 @@ const joystickBtnMouseUp = (event) => {
     }
 }
 
+btnForm.addEventListener('click', onClickBtnForm); 
 joystick.addEventListener('mousedown', joystickBtnMouseDown);
 joystick.addEventListener('mouseup', joystickBtnMouseUp);
 document.addEventListener('keydown', (element) => {
