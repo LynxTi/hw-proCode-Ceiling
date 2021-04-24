@@ -17,7 +17,7 @@
 .wrapper .joystick-and-field-container .joystick-block .joystick-btn-down {
   grid-area: btnDown;
 }
-.wrapper .joystick-and-field-container .joystick-block .joystickMouseDown i {
+.wrapper .joystick-and-field-container .joystick-block .joystickBtnDown i {
   color: goldenrod;
 }
 .wrapper .joystick-and-field-container .field-container {

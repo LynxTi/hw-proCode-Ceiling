@@ -1,7 +1,7 @@
 const form = document.querySelector('.formInputs');
 const btnForm = document.querySelector('.btnForm');
 const fieldContainer = document.querySelector('.field-container');
-const body = document.querySelector('body');
+const joystickBtns = document.querySelectorAll('.joystick-btn');
 let cells; //Масив плиток
 const joystick = document.querySelector('.joystick-block');
 
@@ -38,9 +38,9 @@ const joystickBtnMouseDown = (event) => {
 
     if (target !=joystick) {
         if (target.tagName != 'I') {
-            event.target.classList.add('joystickMouseDown');
+            event.target.classList.add('joystickBtnDown');
         } else {
-            target.parentElement.classList.add('joystickMouseDown');
+            target.parentElement.classList.add('joystickBtnDown');
         }
     }
 }
@@ -50,21 +50,37 @@ const joystickBtnMouseUp = (event) => {
 
     if (target !=joystick) {
         if (target.tagName != 'I') {
-            event.target.classList.remove('joystickMouseDown');
+            event.target.classList.remove('joystickBtnDown');
         } else {
-            target.parentElement.classList.remove('joystickMouseDown');
+            target.parentElement.classList.remove('joystickBtnDown');
         }
     }
 }
 
 joystick.addEventListener('mousedown', joystickBtnMouseDown);
 joystick.addEventListener('mouseup', joystickBtnMouseUp);
-// document.addEventListener('keypress', (element) => {
+document.addEventListener('keydown', (element) => {
+    const btnCode = element.code;
 
-//     if (element.code === 'ArrowUp' || element.code === 'ArrowDown' || 
-//     element.code === 'ArrowLeft' || element.code === 'ArrowRight')  {
-        
-//         console.log(element.code);
-//     }
-// })
+    if (btnCode === 'ArrowUp' || btnCode === 'ArrowDown' || 
+    btnCode === 'ArrowLeft' || btnCode === 'ArrowRight')  {
+        for (const btn of joystickBtns) {
+            if (btn.dataset.codebtn == btnCode) {
+                btn.classList.add('joystickBtnDown');
+            }
+        }
+    }
+})
+document.addEventListener('keyup', (element) => {
+    const btnCode = element.code;
+
+    if (btnCode === 'ArrowUp' || btnCode === 'ArrowDown' || 
+    btnCode === 'ArrowLeft' || btnCode === 'ArrowRight')  {
+        for (const btn of joystickBtns) {
+            if (btn.dataset.codebtn == btnCode) {
+                btn.classList.remove('joystickBtnDown');
+            }
+        }
+    }
+})
 

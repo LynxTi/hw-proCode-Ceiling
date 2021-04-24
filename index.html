@@ -14,18 +14,26 @@
     <div class="wrapper">
         <form action="" class="formInputs">
             <div class="inputs-container">
-                <input type="number" class="colums" name="columns">
-                <input type="number" class="rows" name="rows">
+                <input type="number" class="colums" name="columns" placeholder="Количество колонок">
+                <input type="number" class="rows" name="rows" placeholder="Количество строк">
 
             </div>
             <button type="button" class="btnForm">Create</button>
         </form>
         <div class="joystick-and-field-container">
             <div class="joystick-block">
-                <button class="joystick-btn-up"><i class="fas fa-chevron-circle-up"></i></button>
-                <button class="joystick-btn-left"><i class="fas fa-chevron-circle-left"></i></button>
-                <button class="joystick-btn-right"><i class="fas fa-chevron-circle-right"></i></button>
-                <button class="joystick-btn-down"><i class="fas fa-chevron-circle-down"></i></button>
+                <button class="joystick-btn joystick-btn-up" data-codeBtn="ArrowUp">
+                    <i class="fas fa-chevron-circle-up"></i>
+                </button>
+                <button class="joystick-btn joystick-btn-left" data-codeBtn="ArrowLeft">
+                    <i class="fas fa-chevron-circle-left"></i>
+                </button>
+                <button class="joystick-btn joystick-btn-right" data-codeBtn="ArrowRight">
+                    <i class="fas fa-chevron-circle-right"></i>
+                </button>
+                <button class="joystick-btn joystick-btn-down" data-codeBtn="ArrowDown">
+                    <i class="fas fa-chevron-circle-down"></i>
+                </button>
             </div>
             <div class="field-container"></div>
         </div>
