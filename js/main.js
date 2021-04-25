@@ -7,8 +7,8 @@ const joystick = document.querySelector('.joystick-block');
 const catIcon = document.querySelector('.cat');
 let columns;
 let cellsLenght;
-catIcon.style.top ='40px';
-catIcon.style.left ='70px';
+
+
 
 
 const onClickBtnForm = () => {
@@ -17,28 +17,28 @@ const onClickBtnForm = () => {
     const rows = Number(formData.get('rows'));
 
     joystick.classList.remove('joystick-block-of');
-    createField(columns, rows);
+    createField(columns, rows); // Передаю 2 ар
 
 }
 
-const createField = (columns,rows) => {
-    let counter = 0;
-    let htmlCode = '';
-    
-    for (let i = 0; i < rows; i++) {
-        htmlCode += `<div class="row">`;
-        for (let j = 0; j < columns; j++) {
+const createField = (columns,rows) => { // фукция для создание поля (квадратики), принмает два аргуметна количество строк (rows) и колонок (columns)
+    let counter = 0;    // пременная для создание дата атрибутов для 3 уровня задачи, для перемещие паука
+    let htmlCode = ''; // строка в которую записываю будущий HTML код
+
+    for (let i = 0; i < rows; i++) { // цикл для создание строки,  будет поторятся стольок сколько пользователь задал строк
+        htmlCode += `<div class="row">`; 
+        for (let j = 0; j < columns; j++) { //цикл для создание ячеек в строке
             htmlCode += `<div class="cell" data-number="${counter}"></div>`;
             counter ++;
         }
         htmlCode += `</div>`; 
     }
-    fieldContainer.innerHTML += htmlCode;
+    fieldContainer.innerHTML = htmlCode; // выводим на страницу 
+
+
     cells = document.querySelectorAll('.cell'); // присваиваем в перемунную масив плиток
     cellsLenght = cells.length;
 
-
-    // console.log(findCatCell()); ///----------------------------------------------------------------------------------------------------------------
 } 
 
 const joystickBtnMouseDown = (event) => {
@@ -55,13 +55,19 @@ const joystickBtnMouseDown = (event) => {
 
 const joystickBtnMouseUp = (event) => {
     const target = event.target;
-
+    let btnCode;
     if (target !=joystick) {
         if (target.tagName != 'I') {
-            event.target.classList.remove('joystickBtnDown');
+            target.classList.remove('joystickBtnDown');
+            btnCode = target.dataset.codebtn;
+            console.log(btnCode);
         } else {
             target.parentElement.classList.remove('joystickBtnDown');
+            btnCode = target.parentElement.dataset.codebtn;
+
         }
+        const catCellNumber = findCatCell(catIcon.dataset.positiononarray)
+        chekCell(catCellNumber , btnCode);
     }
 }
 
@@ -81,6 +87,8 @@ document.addEventListener('keydown', (element) => {
         }
     }
 });
+
+
 document.addEventListener('keyup', (element) => {
     const btnCode = element.code;
 
@@ -100,12 +108,17 @@ document.addEventListener('keyup', (element) => {
 
 
 const moveCat = (cell) => {
+    const tempcatIcon = document.querySelector('.cat')
     const top = cell.getBoundingClientRect().top; 
     const left = cell.getBoundingClientRect().left; 
-    console.log('move');
-    // catIcon.style.top = "40px"
-    catIcon.style.top = top + 'px';
-    catIcon.style.left = left + 'px';
+    // tempcatIcon.style.color='red';
+    // console.log('move');
+    // console.log(catIcon.style.color);
+    // console.log('catTop:' + catIcon.style.top);
+    tempcatIcon.style.top = top + 'px';
+    tempcatIcon.style.left = left + 'px';
+    
+    tempcatIcon.dataset.positiononarray = cell.dataset.number;
 }
 
 const chekCell = (catCell, direction) => {
@@ -116,7 +129,7 @@ const chekCell = (catCell, direction) => {
     // console.log(cells);
     let newNumberCatCell;
     let newCatCell;
-    debugger;
+    // debugger;
     switch (direction) {
         case 'ArrowUp':
             if (number - columns >= 0) {
